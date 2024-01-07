@@ -1,7 +1,9 @@
 package routes
 
 import (
-	"go-fiber/handlers"
+	addBook "go-fiber/application/use-cases/add-book"
+	listBooks "go-fiber/application/use-cases/list-books"
+	"go-fiber/infrastructure/repositories"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,11 +11,11 @@ import (
 func RegisterBooksRoutes(api fiber.Router) fiber.Router {
 	books := api.Group("/books")
 
-	books.Post("/", handlers.AddBook)
-	books.Get("/", handlers.GetBooks)
-	books.Get("/:bookID", handlers.GetBook)
-	books.Patch("/:bookID", handlers.UpdateBook)
-	books.Delete("/:bookID", handlers.DeleteBook)
+	books.Post("/", addBook.RegisterAddBookHandler(repositories.BuildPostgresRepo()).AddBook)
+	books.Get("/", listBooks.RegisterListBookHandler(repositories.BuildPostgresRepo()).ListBooks)
+	// books.Get("/:bookID", handlers.GetBook)
+	// books.Patch("/:bookID", handlers.UpdateBook)
+	// books.Delete("/:bookID", handlers.DeleteBook)
 
 	return api
 }
