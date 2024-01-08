@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"go-fiber/application/routes"
 	"go-fiber/utils"
 	"log"
@@ -16,10 +17,14 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
+			"success": true,
+			"message": "You're reaching the go-fiber-server",
+			"data":    nil,
+		})
 	})
 
 	routes.SetupRoutes(app)
 
-	log.Fatal(app.Listen(":6000"))
+	log.Fatal(app.Listen(fmt.Sprintf(":%s", utils.Config("PORT"))))
 }

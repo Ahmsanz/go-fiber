@@ -28,7 +28,7 @@ func (lh ListBooksHandler) ListBooks(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusCreated).JSON(&fiber.Map{
 		"success": true,
-		"message": "Book successfully created",
+		"message": "Books found",
 		"data":    &result,
 	})
 }
