@@ -26,7 +26,7 @@ func (repo PostgresBookRepo) Create(book *models.Book) (*models.Book, error) {
 func (repo PostgresBookRepo) Read() (*[]models.Book, error) {
 	var books []models.Book
 
-	if err := repo.db.Find(&books).Error; err != nil {
+	if err := repo.db.Order("year ASC").Find(&books).Error; err != nil {
 		return nil, err
 	}
 
@@ -42,17 +42,17 @@ func (repo PostgresBookRepo) ReadOne(id string) (*models.Book, error) {
 	return &b, nil
 }
 
-func (repo PostgresBookRepo) Update(id string, book models.Book) (*models.Book, error) {
-
-	if err := repo.db.First(&book, "id = ?", id).Error; err != nil {
+func (repo PostgresBookRepo) Update(id string, book *models.Book) (*models.Book, error) {
+	var result models.Book
+	if err := repo.db.First(&result, "id = ?", id).Error; err != nil {
 		return nil, err
 	}
 
-	if err := repo.db.Model(&book).Updates(book).Error; err != nil {
+	if err := repo.db.Model(&result).Updates(book).Error; err != nil {
 		return nil, err
 	}
 
-	return &book, nil
+	return &result, nil
 }
 
 func (repo PostgresBookRepo) Delete(id string) error {

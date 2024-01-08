@@ -41,7 +41,7 @@ func (ah AddBookHandler) AddBook(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(&fiber.Map{
 		"success": true,
 		"message": "Book successfully created",
-		"data":    book,
+		"data":    &book,
 	})
 }
 

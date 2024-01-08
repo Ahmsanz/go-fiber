@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-fiber/routes"
+	"go-fiber/application/routes"
 	"go-fiber/utils"
 	"log"
 
@@ -20,8 +20,6 @@ func main() {
 	})
 
 	routes.SetupRoutes(app)
-
-	// app.Listen(":3000")
 
 	log.Fatal(app.Listen(":6000"))
 }
