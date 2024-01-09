@@ -25,12 +25,12 @@ The project has been structured around the aproximate interpretation of the prin
 #### Execution
 Run ``` go run main.go``` from the root of the project and it will start the server locally. You'll need to install the dependecies first using ``` go install```. **You will also need a Postgres database with an accessible port**.
 
-You can also run it all via Docker, for which you'll need docker compose installed. Run ```docker-compose -f ./iac/docker/docker-compose.yaml up``` and it will spin a database and the server itself for you.
+You can also run it all via Docker, the fastest and maybe easiest way, for which you'll need docker compose installed. Run ```docker-compose -f ./iac/docker/docker-compose.yaml up``` and it will spin a database and the server itself for you.
 
 **Please note that you will need a .env file at the root of the project, with at least the values for the variables provided in the .env.sample**
 
 
 #### Like what you see?
-'ve been a NodeJS developer for some years now and this project was only meant for my own learning and practice process, but it has some hints of what I would apply on a real, productive project.
+I've been a NodeJS developer for some years now and this project was only meant for my own learning and practice process, but it has some hints of what I would apply on a real, productive project.
 
 If you like the potential of where this could be going, feel free to reach me via [LinkedIn](https://www.linkedin.com/in/adrianmohmedsanz/) and I'll be more than happy to connect and have a chat!  
